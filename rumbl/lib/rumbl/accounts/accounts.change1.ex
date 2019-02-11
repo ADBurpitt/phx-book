@@ -3,13 +3,21 @@ defmodule Rumbl.Accounts do
   The Accounts context
   """
 
+  alias Rumbl.Repo
   alias Rumbl.Accounts.User
+
+  def get_user(id), do: Repo.get(User, id)
+  def get_user!(id), do: Repo.get!(User, id)
+
+  def get_user_by(params), do: Repo.get_by(User, params)
+
+  def list_
 
   def list_users do
     [
       %User{id: "1", name: "Jose", username: "josevalim"},
       %User{id: "2", name: "Bruce", username: "redrapids"},
-      %User{id: "3", name: "Chris", username: "chrismccord"},      
+      %User{id: "3", name: "Chris", username: "chrismccord"},
     ]
   end
 
