@@ -1,12 +1,12 @@
-defmodule RumblWeb do
+defmodule HmmWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, views, channels and so on.
 
   This can be used in your application as:
 
-      use RumblWeb, :controller
-      use RumblWeb, :view
+      use HmmWeb, :controller
+      use HmmWeb, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -19,20 +19,19 @@ defmodule RumblWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller, namespace: RumblWeb
+      use Phoenix.Controller, namespace: HmmWeb
 
       import Plug.Conn
-      import RumblWeb.Gettext
-      import RumblWeb.Auth, only: [authenticate_user: 2]
-      alias RumblWeb.Router.Helpers, as: Routes
+      import HmmWeb.Gettext
+      alias HmmWeb.Router.Helpers, as: Routes
     end
   end
 
   def view do
     quote do
       use Phoenix.View,
-        root: "lib/rumbl_web/templates",
-        namespace: RumblWeb
+        root: "lib/hmm_web/templates",
+        namespace: HmmWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 1, get_flash: 2, view_module: 1]
@@ -40,9 +39,9 @@ defmodule RumblWeb do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import RumblWeb.ErrorHelpers
-      import RumblWeb.Gettext
-      alias RumblWeb.Router.Helpers, as: Routes
+      import HmmWeb.ErrorHelpers
+      import HmmWeb.Gettext
+      alias HmmWeb.Router.Helpers, as: Routes
     end
   end
 
@@ -51,14 +50,13 @@ defmodule RumblWeb do
       use Phoenix.Router
       import Plug.Conn
       import Phoenix.Controller
-      import RumblWeb.Auth, only: [authenticate_user: 2]
     end
   end
 
   def channel do
     quote do
       use Phoenix.Channel
-      import RumblWeb.Gettext
+      import HmmWeb.Gettext
     end
   end
 
