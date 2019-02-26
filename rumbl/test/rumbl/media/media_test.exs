@@ -6,9 +6,9 @@ defmodule Rumbl.MediaTest do
   describe "videos" do
     alias Rumbl.Media.Video
 
-    @valid_attrs %{" url": "some  url", description: "some description", title: "some title"}
-    @update_attrs %{" url": "some updated  url", description: "some updated description", title: "some updated title"}
-    @invalid_attrs %{" url": nil, description: nil, title: nil}
+    @valid_attrs %{url: "some  url", description: "some description", title: "some title"}
+    @update_attrs %{url: "some updated  url", description: "some updated description", title: "some updated title"}
+    @invalid_attrs %{url: nil, description: nil, title: nil}
 
     def video_fixture(attrs \\ %{}) do
       {:ok, video} =

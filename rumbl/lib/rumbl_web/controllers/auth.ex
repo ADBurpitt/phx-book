@@ -31,10 +31,6 @@ defmodule RumblWeb.Auth do
     |> configure_session(renew: true)
   end
 
-  def logout(conn) do
-    configure_session(conn, drop: true)
-  end
-
   def login_email_pass(conn, email, given_pass) do
     case Accounts.authenticate_email_pass(email, given_pass) do
       {:ok, user} -> {:ok, login(conn, user)}
@@ -42,6 +38,10 @@ defmodule RumblWeb.Auth do
       {:error, :not_found} -> {:error, :not_found, conn}
 
     end
+  end
+
+  def logout(conn) do
+    configure_session(conn, drop: true)
   end
 
 end
