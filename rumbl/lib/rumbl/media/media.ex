@@ -8,6 +8,7 @@ defmodule Rumbl.Media do
 
   alias Rumbl.Accounts
   alias Rumbl.Media.Video
+  alias Rumbl.Media.Category
 
   @doc """
   Returns the list of videos.
@@ -108,7 +109,7 @@ defmodule Rumbl.Media do
     |> put_user(user)
   end
 
-  def put_user(changeset, user), do
+  def put_user(changeset, user) do
    Ecto.Changeset.put_assoc(changeset, :user, user)
   end
 
@@ -132,4 +133,9 @@ defmodule Rumbl.Media do
 
   # Videos can be a single video
   defp preload_user(videos), do: Repo.preload(videos, :user)
+
+  def create_category(name) do
+    Repo.get_by(Category, name: name) || Repo.insert!(%Category{name: name})
+  end
+
 end
