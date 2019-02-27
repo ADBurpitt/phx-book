@@ -4,6 +4,12 @@ defmodule RumblWeb.VideoController do
   alias Rumbl.Media
   alias Rumbl.Media.Video
 
+  plug :load_categories when action in [:new, :create, :edit, :update]
+
+  defp load_categories(conn, _) do
+    assign(conn, :categories, Media.list_alphabetical_categories())
+  end
+
   def index(conn, _params, current_user) do
     videos = Media.list_user_videos(current_user)
     render(conn, "index.html", videos: videos)

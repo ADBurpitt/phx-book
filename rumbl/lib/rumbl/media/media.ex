@@ -138,4 +138,10 @@ defmodule Rumbl.Media do
     Repo.get_by(Category, name: name) || Repo.insert!(%Category{name: name})
   end
 
+  def list_alphabetical_categories do
+    Category
+    |> Category.alphabetical()
+    |> Repo.all()
+  end
+
 end
