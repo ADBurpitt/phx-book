@@ -2,7 +2,6 @@ defmodule Rumbl.Media.Video do
   use Ecto.Schema
   import Ecto.Changeset
 
-
   schema "videos" do
     field :url, :string
     field :description, :string
@@ -19,5 +18,6 @@ defmodule Rumbl.Media.Video do
     video
     |> cast(attrs, [:url, :title, :description, :category_id])
     |> validate_required([:url, :title, :description])
+    |> assoc_constraint(:category)
   end
 end
