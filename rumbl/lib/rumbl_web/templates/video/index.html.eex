@@ -21,7 +21,7 @@
         %>
       </td>
       <td>
-        <%= link "Watch", to: Routes.video_path(@conn, :show, video), class: "button" %>
+        <%= link "Watch", to: Routes.watch_path(@conn, :show, video), class: "button" %>
       </td>
     </tr>
 <% end %>

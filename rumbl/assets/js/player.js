@@ -1,4 +1,4 @@
-export default Player = {
+const Player = {
   player: null,
 
   init(domId, playerId, onReady) {
@@ -22,11 +22,18 @@ export default Player = {
         }
       }
     )
+    console.log("yup")
   },
 
   onPlayerStateChange(event) {},
 
-  getCurrentTime: () => Math.floor(this.player.getCurrentTime() * 1000),
+  getCurrentTime() {
+    return Math.floor(this.player.getCurrentTime() * 1000)
+  },
 
-  seekTo: ms => this.player.seekTo(ms / 1000)
+  seekTo(ms) {
+    this.player.seekTo(ms / 1000)
+  }
 }
+
+export default Player
