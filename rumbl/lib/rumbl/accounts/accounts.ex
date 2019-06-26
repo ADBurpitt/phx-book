@@ -9,6 +9,8 @@ defmodule Rumbl.Accounts do
   alias Rumbl.Accounts.User
   alias Rumbl.Accounts.Credential
 
+  def list_users_with_ids(ids), do: Repo.all(from(u in User, where: u.id in ^ids))
+
   def get_user_by_email(email) do
     from(u in User, join: c in assoc(u, :credential), where: c.email == ^email)
     |> Repo.one()
